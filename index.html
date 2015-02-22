@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monty Hall problem Shiny app</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Monty Hall problem Shiny app">
+  <meta name="author" content="Juergen Pahle">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Monty Hall problem Shiny app</h1>
+    <h2>How to get a car instead of a goat</h2>
+    <p>Juergen Pahle<br/>Coursera Developing Data Products course</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Monty Hall problem</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You are a candidate in a game show where the host shows you three closed doors. He tells you that there is a car behind one of the doors and goats behind the other two. The game is as follows:</p>
+
+<p>You choose one of the doors. The host, who knows where the car is, opens one of the other doors with a goat behind it. Then, he asks you whether you would like to stick with your original choice or pick the other closed door.</p>
+
+<p>Assuming that you want the car, what should you do?</p>
+
+<p><img src="assets/img/Monty_open_door.svg" alt="Monty Hall problem illustration"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Different Strategies</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When this game is played multiple times in a row, you can follow different strategies:</p>
+
+<ol>
+<li>Always stick with the original door.</li>
+<li>Always switch to the other door.</li>
+<li>Keep your original choice with a certain probability.</li>
+</ol>
+
+<p>We will solve this problem by simulating the game using a Shiny app:</p>
+
+<pre><code class="r">library(shiny)
+
+# define server logic required to simulate and draw timecourse
+shinyServer(function(input, output) {
+  [..]
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The Monty Hall problem Shiny app</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img style="float: right" src="assets/img/screenshot.png"></p>
+
+<p>The Monty Hall problem Shiny app (<a href="http://juergen.shinyapps.io/MontyHallProblem">http://juergen.shinyapps.io/MontyHallProblem</a>) allows you to simulate a user-defined number of Monty Hall problem rounds. A panel on the left side of the app offers controls to set the number of runs to simulate, the strategy to use, and the probability for keeping the original choice for strategy 3.</p>
+
+<p>A plot on the right hand side shows your success. You start with zero points and win one point if you get the car and lose one point if you get a goat. The plot shows your accumulated points (y-axis) over the rounds simulated (x-axis).</p>
+
+<p>The slope of the red straight line connecting the origin with the value of the last run approximates the overall rate of wins.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Solution</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>As can be easily seen by simulation, the best strategy is always to switch doors. This will yield a car in 2 of 3 cases and a goat in 1 of 3 cases. If one always sticks with the first choice one will only win a car in 1 of 3 cases.</p>
+
+<p>Most people assume that switching does not change the chances of winning and that in both cases there is a 0.5 probability of winning. However, the counterintuitive result that we got by simulating the problem can also be explained by logical arguments. Many different explanations can be found on the web:</p>
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Monty_Hall_problem">http://en.wikipedia.org/wiki/Monty_Hall_problem</a></li>
+<li><a href="http://marilynvossavant.com/game-show-problem">http://marilynvossavant.com/game-show-problem</a></li>
+<li><a href="https://www.youtube.com/watch?v=mhlc7peGlGg">https://www.youtube.com/watch?v=mhlc7peGlGg</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Monty Hall problem'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Different Strategies'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Monty Hall problem Shiny app'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Solution'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
